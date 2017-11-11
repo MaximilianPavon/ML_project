@@ -21,4 +21,4 @@ def make_submission(predicted_labels, file_label=''):
     with open(file_label + time.strftime("%Y-%m-%d-%H-%M-%S") + '.csv', 'w', newline='') as f:
         writer = csv.writer(f, delimiter=',')
         writer.writerow(['Sample_id', 'Sample_label'])
-        writer.writerows(enumerate(predicted_labels))
+        writer.writerows(enumerate(predicted_labels, start=1))
