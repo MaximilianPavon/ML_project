@@ -1,0 +1,105 @@
+\documentclass[12pt,a4paper,twocolumn]{article}
+
+\usepackage[english]{babel} 		%% englische Sprache
+
+\usepackage[latin1,applemac]{inputenc}	%% deutsche Umlaute wie normale
+ 					%% Buchstaben verwenden 
+ 					%% (ansonsten muesste ‰ durch a getippt werden)
+\usepackage{a4wide} 			%% kleinere Seitenränder
+
+\usepackage{amssymb,amsthm,amsfonts, amsmath}
+								%% diverse Matheerweiterungen, z.B. \implies
+ 								%% diverse Matheerweiterungen, z.B. \mathbb{R}
+%\usepackage{stmaryrd} 			%% weitere Symbole
+\usepackage{epsfig} 			%% um eps-Dateien einzubinden (\epsfig{file=...})
+\usepackage{longtable} 			%% fuer Tabellen ueber mehrere Seiten
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{dsfont}
+\usepackage{caption}
+\captionsetup[table]{name=Cache tables}
+
+\title{ \textit{Some super concise and informative title} \\ Data Analysis Project for \\ \textit{Machine Learning: Basic Principles}}
+%\author{Héctor Laria Mantecón and Maximilian Proll}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\textit{
+Precise summary of the whole report, previews the contents and results. Must be a single paragraph between 100 and 200 words.
+}
+
+\end{abstract}
+
+\section{Introduction}
+
+\textit{
+Background, problem statement, motivation, many references, description of contents. Introduces the reader to the topic and the broad context within which your research/project fits
+\begin{itemize}
+\item What do you hope to learn from the project?
+\item What question is being addressed?
+\item Why is this task important? (motivation)
+\end{itemize}
+Keep it short (half to 1 page).
+}
+
+\section{Data analysis}
+
+\textit{
+Briefly describe data (class distribution, dimensionality) and how will it affect classification. Visualize the data. Don’t focus too much on the meaning of the features, unless you want to.
+\begin{itemize}
+\item Include histograms showing class distribution.
+\end{itemize}
+}
+
+\section{Methods and experiments}
+
+\textit{
+Explain your whole approach (you can include a block diagram showing the steps in your process).
+\begin{itemize}
+\item What methods/algorithms, why were the methods chosen.
+\item What evaluation methodology (cross CV, etc.).
+\end{itemize}
+}
+
+\section{Results}
+
+\textit{
+Summarize the results of the experiments without discussing their implications.
+\begin{itemize}
+\item Include both performance measures (accuracy and LogLoss).
+\item How does it perform on kaggle compared to the train data.
+\item Include a confusion matrix.
+\end{itemize}
+}
+
+\section{Discussion/Conclusions}
+
+\textit{
+Interpret and explain your results
+\begin{itemize}
+\item Discuss the relevance of the performance measures (accuracy and LogLoss) for
+imbalanced multiclass datasets.
+\item How the results relate to the literature.
+\item Suggestions for future research/improvement.
+\item Did the study answer your questions?
+\end{itemize}
+}
+
+\section{References}
+
+\textit{List of all the references cited in the document
+}
+
+\section{Appendices}
+
+\textit{Additional information that is not essential to explain your findings, but supports your work. For example, source code, additional images, mathematical derivations, etc.
+If you include source code, don’t include the whole code, focus only on the most important parts, for example, a function implementing a specific algorithm
+}
+
+
+\end{document}
