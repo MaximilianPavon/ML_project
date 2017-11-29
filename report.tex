@@ -48,13 +48,31 @@ Keep it short (half to 1 page).
 }
 
 \section{Data analysis}
+This competition is performed on two datasets, a training and a test dataset with $4.363$ resp. $6.544$ songs. Each dataset has a total of $264$ features, which will be used for predicting one of $10$ classes. The features con be grouped into the 3 main components of music: timbre, pitch and rhythm. The $10$ classes are:  Pop Rock, Electronic, Rap, Jazz, Latin, R\&B, International, Country, Reggae and Blues.
 
-\textit{
-Briefly describe data (class distribution, dimensionality) and how will it affect classification. Visualize the data. Don’t focus too much on the meaning of the features, unless you want to.
-\begin{itemize}
-\item Include histograms showing class distribution.
-\end{itemize}
-}
+In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown below:
+
+\begin{center}
+\includegraphics[width=\linewidth]{report_files/TSNE_data.png}
+\end{center}
+
+It is also important to know the distribution of the given training dataset. The distribution is shown in the following picture:
+
+\begin{center}
+\includegraphics[width=\linewidth]{report_files/Class_distribution.png}
+\end{center}
+
+This distribution shows very clearly that the training data is skewed, which means that the predictor will be able to generalise better for the majority classes.
+
+%in case we need to fill more space we could add a boxplot of the 264 features.
+
+
+%\textit{
+%Briefly describe data (class distribution, dimensionality) and how will it affect classification. Visualize the data. Don’t focus too much on the meaning of the features, unless you want to.
+%\begin{itemize}
+%\item Include histograms showing class distribution.
+%\end{itemize}
+%}
 
 \section{Methods and experiments}
 
