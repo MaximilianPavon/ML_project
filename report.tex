@@ -18,6 +18,7 @@
 \usepackage{dsfont}
 \usepackage{caption}
 \captionsetup[table]{name=Cache tables}
+\usepackage{multirow}
 
 \title{ \textit{Some super concise and informative title} \\ Data Analysis Project for \\ \textit{Machine Learning: Basic Principles}}
 %\author{HŽctor Laria Mantec—n and Maximilian Proll}
@@ -84,6 +85,15 @@ Explain your whole approach (you can include a block diagram showing the steps i
 \end{itemize}
 }
 
+\subsection{Logistic Regression}
+
+\subsection{Support Vector Machines}
+
+\subsection{Naive Bayes}
+
+\subsection{Neural Networks}
+For this approach, we tried a fixed architecture of 5 layers with 100 to 200 units but different setting of hyper-parameters. 
+
 \section{Results}
 
 \textit{
@@ -94,6 +104,25 @@ Summarize the results of the experiments without discussing their implications.
 \item Include a confusion matrix.
 \end{itemize}
 }
+
+We can see measurements of the methods chosen in Table~\ref{table:measurements}.
+
+\begin{table}[h]
+\centering
+\caption{My caption}
+\label{table:measurements}
+\begin{tabular}{llcc}
+                                  &         & \textbf{Validation} & \textbf{Kaggle} \\ \hline
+\multirow{2}{*}{\textbf{Log Reg}} & Accuracy  & 0.74329             & 0.65021         \\ \cline{2-2}
+                                  & Log. Loss & -                   & 0.17736         \\ \hline
+\multirow{2}{*}{\textbf{SVM}}     & Accuracy  & 0.85835             & 0.60238         \\ \cline{2-2}
+                                  & Log. Loss & -                   & 0.25370         \\ \hline
+\multirow{2}{*}{\textbf{NB}}      & Accuracy  & -                   & 0.61720         \\ \cline{2-2}
+                                  & Log. Loss & -                   & 0.19949         \\ \hline
+\multirow{2}{*}{\textbf{NN}}      & Accuracy  & 0.73779             & 0.63523         \\ \cline{2-2}
+                                  & Log. Loss & -                   & 0.19893         \\ \hline
+\end{tabular}
+\end{table}
 
 \section{Discussion/Conclusions}
 
