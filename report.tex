@@ -17,7 +17,6 @@
 \usepackage{hyperref}
 \usepackage{dsfont}
 \usepackage{caption}
-\captionsetup[table]{name=Cache tables}
 
 \title{ \textit{Some super concise and informative title} \\ Data Analysis Project for \\ \textit{Machine Learning: Basic Principles}}
 %\author{Héctor Laria Mantecón and Maximilian Proll}
@@ -62,10 +61,9 @@ It is also important to know the distribution of the given training dataset. The
 \includegraphics[width=\linewidth]{report_files/Class_distribution.png}
 \end{center}
 
-This distribution shows very clearly that the training data is skewed, which means that the predictor will be able to generalise better for the majority classes.
+This distribution shows very clearly that the training data is skewed, which means that the predictor will be able to generalise better for the majority classes and worse for those classes that have not many samples representing them.
 
 %in case we need to fill more space we could add a boxplot of the 264 features.
-
 
 %\textit{
 %Briefly describe data (class distribution, dimensionality) and how will it affect classification. Visualize the data. Don’t focus too much on the meaning of the features, unless you want to.
@@ -75,6 +73,24 @@ This distribution shows very clearly that the training data is skewed, which mea
 %}
 
 \section{Methods and experiments}
+\subsection{Overall approach}
+
+To achieve best overall results we tried various machine learning techniques ranging from logistic regression (LogReg) and support vector machines (SVM) to naïve Bayes classifiers (NB) and neural networks (NN). Common for all machine learning techniques was, that we first standardised the training as well as the test data prior to performing any analysis. This step is crucial as it helps to reduce multicollinearity within the data and helps to improve the generalisation. This behaviour is backed up by comparing the accuracy of the prediction of the training data without standardisation ($p$) and with standardisation ($p_{st}$), which is summarised in table \ref{tab:accuracystandard}.
+
+\begin{table}
+\centering
+\begin{tabular}{c|c|c}
+ML technique & $p$ & $p_{st}$ \\ \hline
+LogReg & 0.66 & 0.74 \\
+SVM & 0.03 & 0.22 \\
+NB & 0.46 & 0.52 \\
+NN & 0.55 & 0.73
+\end{tabular}
+\caption{Comparison of accuracy of training data without standardisation and with  standardisation}
+\label{tab:accuracystandard}
+\end{table}
+
+In order to prevent our analysis against heavy overfitting we chose to implement cross-validation for all machine learning techniques. We associated randomly 20\% of the training set to be the validation set. We then trained the model with the remaining 80\% of the training set and validating the analysis on the validation set. This is done multiple times and averaged.
 
 \textit{
 Explain your whole approach (you can include a block diagram showing the steps in your process).
