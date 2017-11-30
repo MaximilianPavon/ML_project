@@ -2,3 +2,10 @@
 .ipynb_checkpoints
 __pycache__
 submissions/
+
+*.pdf
+
+*.aux
+*.log
+*.out
+*.synctex.gz
