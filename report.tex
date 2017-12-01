@@ -57,7 +57,7 @@ Keep it short (half to 1 page).
 \section{Data analysis}
 This competition is performed on two datasets, a training and a test dataset with $4.363$ resp. $6.544$ songs. Each dataset has a total of $264$ features, which will be used for predicting one of $10$ classes. The features con be grouped into the 3 main components of music: timbre, pitch and rhythm. The $10$ classes are:  Pop Rock, Electronic, Rap, Jazz, Latin, R\&B, International, Country, Reggae and Blues.
 
-In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown in Figure \ref{pic:tsne}.
+In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} \cite{tsne} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown in Figure \ref{pic:tsne}.
 
 \begin{figure}
 \includegraphics[width=\linewidth]{report_files/TSNE_data.png}
@@ -107,13 +107,18 @@ NN & 0.55 & 0.73
 In order to prevent our analysis against heavy overfitting we chose to implement cross-validation for all machine learning techniques. We associated randomly 20\% of the training set to be the validation set. We then trained the model with the remaining 80\% of the training set and validating the analysis on the validation set. This is done multiple times and averaged.
 
 \subsection{Logistic Regression}
+We first approached the considered for this set up was Logistic Regression and discarded Linear Regression, as it is obvious the data is highly non-linear. We changed fist the penalty, using L1 regularisation in favour of L2, delivering better results.
+
+We also tweaked the stopping criteria to get the best performance with the less time expenditure. For the solver, we trained with liblinear and saga, which are recommended for large datasets, and newton-cg and lbfgs, recommended for multiclass problems. The changes delivered minimal to no advantage on the accuracy.
+
+We used the warm start technique for every solver, without luck either.
 
 \subsection{Support Vector Machines}
 
 \subsection{Na•ve Bayes}
 
 \subsection{Neural Networks}
-For this approach, we tried a fixed architecture of 5 fully connected hidden layers with 120 to 250 neurons per layer. We tried several different settings for the hyper-parameters such as the activation function, the update technique and the constancy as well as the initialisation value of the learning rate.
+For this approach, we tried a fixed architecture of 5 fully connected hidden layers with 120 to 250 neurons per layer. We tested several different settings for the hyper-parameters such as the activation function, the update technique and the constancy as well as the initialisation value of the learning rate.
 
 For the activation function we variated between the logistic sigmoid function, the the hyperbolic tangent function and the rectified linear unit function.
 
