@@ -49,17 +49,23 @@ Keep it short (half to 1 page).
 \section{Data analysis}
 This competition is performed on two datasets, a training and a test dataset with $4.363$ resp. $6.544$ songs. Each dataset has a total of $264$ features, which will be used for predicting one of $10$ classes. The features con be grouped into the 3 main components of music: timbre, pitch and rhythm. The $10$ classes are:  Pop Rock, Electronic, Rap, Jazz, Latin, R\&B, International, Country, Reggae and Blues.
 
-In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown below:
+In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown in Figure \ref{pic:tsne}.
 
-\begin{center}
+\begin{figure}
 \includegraphics[width=\linewidth]{report_files/TSNE_data.png}
-\end{center}
+\caption{Data visualisation after t-SNE with $3$ dimensions}
+\label{pic:tsne}
+\end{figure}
 
-It is also important to know the distribution of the given training dataset. The distribution is shown in the following picture:
+This figure shows, that there does not exist a trivial separation of all 10 classes after the t-SNE in a 3-dimensional space. This might already lower somehow the expectations for the prediction accuracy. 
 
-\begin{center}
+It is also important to know the distribution of the given training dataset. The distribution is shown in figure \ref{pic:classdistribution}.
+
+\begin{figure}
 \includegraphics[width=\linewidth]{report_files/Class_distribution.png}
-\end{center}
+\caption{Class distribution}
+\label{pic:classdistribution}
+\end{figure}
 
 This distribution shows very clearly that the training data is skewed, which means that the predictor will be able to generalise better for the majority classes and worse for those classes that have not many samples representing them.
 
@@ -91,6 +97,23 @@ NN & 0.55 & 0.73
 \end{table}
 
 In order to prevent our analysis against heavy overfitting we chose to implement cross-validation for all machine learning techniques. We associated randomly 20\% of the training set to be the validation set. We then trained the model with the remaining 80\% of the training set and validating the analysis on the validation set. This is done multiple times and averaged.
+
+\subsection{Logistic Regression}
+
+\subsection{Support Vector Machines}
+
+\subsection{Naive Bayes}
+
+\subsection{Neural Networks}
+For this approach, we tried a fixed architecture of 5 fully connected hidden layers with 120 to 250 neurons per layer. We tried several different settings for the hyper-parameters such as the activation function, the update technique and the constancy as well as the initialisation value of the learning rate.
+
+For the activation function we variated between the logistic sigmoid function, the the hyperbolic tangent function and the rectified linear unit function.
+
+Apart from the simple stochastic gradient descent we tried also an optimiser from the family of quasi-Newton methods and the well known update technique Adam, which refers to the stochastic gradient-based optimiser proposed by Kingma, Diederik, and Jimmy Ba.
+
+Finally we used three different learning rate schedules for weight updates. The most commonly used is a constant learning rate, but we also used a gradually decreasing learning rate each time step $t$ using an inverse scaling  and finally an adaptive learning rate, which keeps the learning rate constant as long as training loss keeps decreasing and each time two consecutive epochs fail to decrease training loss or fail to increase validation score, the current learning rate is divided by 5.
+
+The initialisation value of the learning rate was decreased if no convergence occurred within a reasonable number of iterations.
 
 \textit{
 Explain your whole approach (you can include a block diagram showing the steps in your process).
@@ -131,7 +154,7 @@ imbalanced multiclass datasets.
 
 \section{Appendices}
 
-\textit{Additional information that is not essential to explain your findings, but supports your work. For example, source code, additional images, mathematical derivations, etc.
+\textit{Additional information that is not essential to explain your findings, but supports your work. For example, source code, additional images, mathematical derivations, etc. \\
 If you include source code, don’t include the whole code, focus only on the most important parts, for example, a function implementing a specific algorithm
 }
 
