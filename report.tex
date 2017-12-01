@@ -116,6 +116,11 @@ We used the warm start technique for every solver, without luck either.
 \subsection{Support Vector Machines}
 
 \subsection{Na夫e Bayes}
+Here we tried two differerent Na夫e algorithms, Gaussian Na夫e Bayes and Multinomial Na夫e Bayes. The performance for both of them though wasn't acceptable as none beat the benchmark.
+
+Gaussian Na夫e Bayes was set up with no prior and a smoothing parameter of 1. One aspect worth noting is that this algorithm needs data samples $<0$, therefore we had to rescale the data in the range of $[0,1]$ instead.
+
+Multinomial Na夫e Bayes was scaled normally, and didn't use any prior either.
 
 \subsection{Neural Networks}
 For this approach, we tried a fixed architecture of 5 fully connected hidden layers with 120 to 250 neurons per layer. We tested several different settings for the hyper-parameters such as the activation function, the update technique and the constancy as well as the initialisation value of the learning rate.
