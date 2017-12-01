@@ -116,7 +116,7 @@ For this approach, we tried a fixed architecture of 5 fully connected hidden lay
 
 For the activation function we variated between the logistic sigmoid function, the the hyperbolic tangent function and the rectified linear unit function.
 
-Apart from the simple stochastic gradient descent we tried also an optimiser from the family of quasi-Newton methods and the well known update technique Adam, which refers to the stochastic gradient-based optimiser proposed by Kingma, Diederik, and Jimmy Ba.
+Apart from the simple stochastic gradient descent we tried also an optimiser from the family of quasi-Newton methods and the well known update technique Adam \cite{DBLP:journals/corr/KingmaB14}, a stochastic gradient-based optimiser.
 
 Finally we used three different learning rate schedules for weight updates. The most commonly used is a constant learning rate, but we also used a gradually decreasing learning rate each time step $t$ using an inverse scaling  and finally an adaptive learning rate, which keeps the learning rate constant as long as training loss keeps decreasing and each time two consecutive epochs fail to decrease training loss or fail to increase validation score, the current learning rate is divided by 5.
 
@@ -129,15 +129,6 @@ Explain your whole approach (you can include a block diagram showing the steps i
 \item What evaluation methodology (cross CV, etc.).
 \end{itemize}
 }
-
-\subsection{Logistic Regression}
-
-\subsection{Support Vector Machines}
-
-\subsection{Naive Bayes}
-
-\subsection{Neural Networks}
-For this approach, we tried a fixed architecture of 5 layers with 100 to 200 units but different setting of hyper-parameters. 
 
 \section{Results}
 
@@ -184,8 +175,10 @@ imbalanced multiclass datasets.
 
 \section{References}
 
-\textit{List of all the references cited in the document
-}
+%\textit{List of all the references cited in the document
+%}
+\bibliography{bibliography}{}
+\bibliographystyle{plain}
 
 \section{Appendices}
 
