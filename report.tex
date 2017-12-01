@@ -19,6 +19,10 @@
 \usepackage{caption}
 \usepackage{multirow}
 
+\hypersetup{						%get rid of red box around hyperlink
+pdfborder = {0 0 0}
+}
+
 
 \title{ \textcolor{red}{\textbf{\textit{Some super concise and informative title}}} \\ Data Analysis Project for \\ \textit{Machine Learning: Basic Principles}}
 %\author{HŽctor Laria Mantec—n and Maximilian Proll}
@@ -37,22 +41,23 @@ Precise summary of the whole report, previews the contents and results. Must be 
 
 \section{Introduction}
 
-The name Spotify will ring a bell and Spotify is probably the most famous company in the music streaming business. Within six years they turned free music into a \$10+ billion valuation with more than 50 million users, 12.5 million of which pay for their service.
+The name Spotify will ring a bell as Spotify is one of the most famous companies in the music streaming business. Within six years they turned free music into a \$10+ billion valuation with more than 50 million users, 12.5 million of which pay for their service.
 
-How did Spotify achieve that? For one the appealing so-called freemium business model offered users a good (and legal) alternative to piracy and the pay-per-track model of iTunes. But on the other side Spotify particularly shined with state of the art product features, which include a unprecedent recommendation system for tracks, albums and playlists.
+How did Spotify achieve that? For one the appealing so-called freemium business model offered users a good (and legal) alternative to piracy and the pay-per-track model of iTunes. But on the other side Spotify particularly shined with state of the art product features, which include a unprecedented recommendation system for tracks, albums and playlists.
 
-One crucial step for those above-mention recommendation systems is to understand the genre which a user seems to like. If a user listens a lot to Jazz, 
+One crucial step for those above-mentioned recommendation systems is to understand the music genre which a user seems to like. If a user listens a lot to Jazz, it is plausible to suggest new Jazz songs.
 
+Like in real life the existing songs are already classified to one music genre. This corresponds in our project to the provided training set. But Spotify will eventually sign more license agreements with new artists or signed artists will release new songs and these songs need to be classified. And exactly this  classification of new songs (test data set) is the task of this project. By applying various machine learning techniques taught in the lectures we understood advantages and disadvantages of those concepts and which is best applied to our case.
 
-\textit{
-Background, problem statement, motivation, many references, description of contents. Introduces the reader to the topic and the broad context within which your research/project fits
-\begin{itemize}
-\item What do you hope to learn from the project?
-\item What question is being addressed?
-\item Why is this task important? (motivation)
-\end{itemize}
-Keep it short (half to 1 page).
-}
+%\textit{
+%Background, problem statement, motivation, many references, description of contents. Introduces the reader to the topic and the broad context within which your research/project fits
+%\begin{itemize}
+%\item What do you hope to learn from the project?
+%\item What question is being addressed?
+%\item Why is this task important? (motivation)
+%\end{itemize}
+%Keep it short (half to 1 page).
+%}
 
 \section{Data analysis}
 This competition is performed on two datasets, a training and a test dataset with $4.363$ resp. $6.544$ songs. Each dataset has a total of $264$ features, which will be used for predicting one of $10$ classes. The features con be grouped into the 3 main components of music: timbre, pitch and rhythm. The $10$ classes are:  Pop Rock, Electronic, Rap, Jazz, Latin, R\&B, International, Country, Reggae and Blues.
@@ -146,8 +151,6 @@ We can see measurements of the methods chosen in Table~\ref{table:measurements}.
 
 \begin{table}[h]
 \centering
-\caption{Performance measurements (accuracy and LogLoss), and performance on Kaggle competition.}
-\label{table:measurements}
 \begin{tabular}{llcc}
                                   &         & \textbf{Validation} & \textbf{Kaggle} \\ \hline
 \multirow{2}{*}{\textbf{Log Reg}} & Accuracy  & 0.74329             & 0.65021         \\ \cline{2-2}
@@ -159,23 +162,24 @@ We can see measurements of the methods chosen in Table~\ref{table:measurements}.
 \multirow{2}{*}{\textbf{NN}}      & Accuracy  & 0.73779             & 0.63523         \\ \cline{2-2}
                                   & Log. Loss & -                   & 0.19893         \\ \hline
 \end{tabular}
+\caption{Performance measurements (accuracy and LogLoss), and performance on Kaggle competition.}
+\label{table:measurements}
 \end{table}
 
+\newpage
 \section{Discussion/Conclusions}
+Table \ref{table:measurements} 
 
 \textit{
 Interpret and explain your results
 \begin{itemize}
-\item Discuss the relevance of the performance measures (accuracy and LogLoss) for
-imbalanced multiclass datasets.
+\item Discuss the relevance of the performance measures (accuracy and LogLoss) for imbalanced multiclass datasets.
 \item How the results relate to the literature.
 \item Suggestions for future research/improvement.
 \item Did the study answer your questions?
 \end{itemize}
 }
 
-%\textit{List of all the references cited in the document
-%}
 \bibliography{bibliography}{}
 \bibliographystyle{alpha}
 
