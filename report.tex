@@ -47,7 +47,7 @@ How did Spotify achieve that? For one the appealing so-called freemium business 
 
 One crucial step for those above-mentioned recommendation systems is to understand the music genre which a user seems to like. If a user listens a lot to Jazz, it is plausible to suggest new Jazz songs.
 
-Like in real life the existing songs are already classified to one music genre. This corresponds in our project to the provided training set. But Spotify will eventually sign more license agreements with new artists or signed artists will release new songs and these songs need to be classified. And exactly this  classification of new songs (test data set) is the task of this project. By applying various machine learning techniques taught in the lectures we understood advantages and disadvantages of those concepts and which is best applied to our case.
+Like in real life the existing songs are already classified to one music genre. This corresponds in our project to the provided training set. But Spotify will eventually sign more license agreements with new artists or signed artists will release new songs and these songs need to be classified. And exactly this classification of new songs (test data set) is the task of this project. By applying various machine learning techniques taught in the lectures we understood advantages and disadvantages of those concepts and which is best applied to our case.
 
 %\textit{
 %Background, problem statement, motivation, many references, description of contents. Introduces the reader to the topic and the broad context within which your research/project fits
@@ -60,7 +60,7 @@ Like in real life the existing songs are already classified to one music genre. 
 %}
 
 \section{Data analysis}
-This competition is performed on two datasets, a training and a test dataset with $4.363$ resp. $6.544$ songs. Each dataset has a total of $264$ features, which will be used for predicting one of $10$ classes. The features con be grouped into the 3 main components of music: timbre, pitch and rhythm. The $10$ classes are:  Pop Rock, Electronic, Rap, Jazz, Latin, R\&B, International, Country, Reggae and Blues.
+This competition is performed on two datasets, a training and a test dataset with $4.363$ resp. $6.544$ songs. Each dataset has a total of $264$ features, which will be used for predicting one of $10$ classes. The features con be grouped into the 3 main components of music: timbre, pitch and rhythm. The $10$ classes are: Pop Rock, Electronic, Rap, Jazz, Latin, R\&B, International, Country, Reggae and Blues.
 
 In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} \cite{tsne} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown in Figure \ref{pic:tsne}.
 
@@ -105,7 +105,7 @@ SVM & 0.03 & 0.22 \\
 NB & 0.46 & 0.52 \\
 NN & 0.55 & 0.73
 \end{tabular}
-\caption{Comparison of accuracy of training data without standardisation and with  standardisation}
+\caption{Comparison of accuracy of training data without standardisation and with standardisation}
 \label{tab:accuracystandard}
 \end{table}
 
@@ -139,7 +139,7 @@ For the activation function we variated between the logistic sigmoid function, t
 
 Apart from the simple stochastic gradient descent we tried also an optimiser from the family of quasi-Newton methods and the well known update technique Adam \cite{DBLP:journals/corr/KingmaB14}, a stochastic gradient-based optimiser.
 
-Finally we used three different learning rate schedules for weight updates. The most commonly used is a constant learning rate, but we also used a gradually decreasing learning rate each time step $t$ using an inverse scaling  and finally an adaptive learning rate, which keeps the learning rate constant as long as training loss keeps decreasing and each time two consecutive epochs fail to decrease training loss or fail to increase validation score, the current learning rate is divided by 5.
+Finally we used three different learning rate schedules for weight updates. The most commonly used is a constant learning rate, but we also used a gradually decreasing learning rate each time step $t$ using an inverse scaling and finally an adaptive learning rate, which keeps the learning rate constant as long as training loss keeps decreasing and each time two consecutive epochs fail to decrease training loss or fail to increase validation score, the current learning rate is divided by 5.
 
 The initialisation value of the learning rate was decreased if no convergence occurred within a reasonable number of iterations.
 
@@ -182,11 +182,10 @@ We can see measurements of the methods chosen in Table~\ref{table:measurements}.
 \end{table}
 
 \section{Discussion/Conclusions}
+
 Table \ref{table:measurements} shows that the best result is achieved by logistic regression. The second best result is achieved by the five-layered neural network. Na•ve bayes became second last before support vector machines.
 
-The support vector machines performed quite bad, because it overfitted the data strongly and therefore did not learn enough in order to generalise well for unseen data.
-
-
+The support vector machines perform relatively bad, because it overfitted the data strongly and therefore did not learn enough in order to generalise well for unseen data.
 
 
 \textit{
