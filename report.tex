@@ -185,16 +185,22 @@ We can see measurements of the methods chosen in Table~\ref{table:measurements}.
 
 Table \ref{table:measurements} shows that the best result is achieved by logistic regression. The second best result is achieved by the five-layered neural network. Na•ve bayes became second last before support vector machines.
 
-The support vector machines perform relatively bad, because it overfitted the data strongly and therefore did not learn enough in order to generalise well for unseen data.
+The support vector machines perform relatively bad, because it continuously overfitted the data strongly and therefore did not learn enough of the underlying principles in order to generalise well for unseen data, which is why both results (accuracy and log loss) are becoming last in the kaggle competition whereas the score for the training data is among the highest.
 
+ 
 
+In order to achieve better results, it seem crucial to fully understand the 264 features. If we compare our result to what other teams achieved,  an accuracy of greater than 68\% was not achieved by anyone. A deeper understanding of what the features mean with respect to the given music genres would surely lead to even higher accuracies and decreasing log losses.
+
+The questions raised at the beginning was partially answered. We see that it is somewhat possible to predict a music genre based on the given training data up to a certain degree. But if we come back to our initial example Spotify, it is quite obvious that there is still a lot of room for improvement, as they surely would not be satisfied with an accuracy of below than 70\%. And this also raises the question on which enhanced analysis Spotify might perform in order to better classify the data.
+
+ 
 \textit{
 Interpret and explain your results
 \begin{itemize}
-\item Discuss the relevance of the performance measures (accuracy and LogLoss) for imbalanced multiclass datasets.
+\item \textcolor{red}{Discuss the relevance of the performance measures (accuracy and LogLoss) for imbalanced multiclass datasets.}
 \item How the results relate to the literature.
-\item Suggestions for future research/improvement.
-\item Did the study answer your questions?
+\item \textcolor{green}{Suggestions for future research/improvement.}
+\item \textcolor{green}{Did the study answer your questions?}
 \end{itemize}
 }
 
