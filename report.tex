@@ -187,22 +187,24 @@ Table \ref{table:measurements} shows that the best result is achieved by logisti
 
 The support vector machines perform relatively bad, because it continuously overfitted the data strongly and therefore did not learn enough of the underlying principles in order to generalise well for unseen data, which is why both results (accuracy and log loss) are becoming last in the kaggle competition whereas the score for the training data is among the highest.
 
- 
+In this competition we computed two different performance measures, one being \textit{accuracy} and the other one being \textit{log loss}. The usage of accuracy is generally legit when the underlying data can by classified into two classes. But whenever the data shall be classified to more than two classes, instead of a binary classification, we would like to see, how certain our model actually is and penalise uncertainty. This is the motivation for using log loss over accuracy. The latter is easier to interpret and understand by humans, but we loose information on the model regarding uncertainty. Log loss might not be as intuitive on the first sight, but gives way more information about how well a model is really performing.
+
+Especially if the test data set is highly unbalanced (i.e. the majority of the data is from one certain class and all other classes are underrepresented) the usage of accuracy as a performance measure shows its downsides. In this case a high accuracy might be primarily driven by a good prediction for the majority class, but on the other side the model might be unable to predict the correct class for the underrepresented classes. The log loss on the other hand we correctly reflect if a model is only performing well for certain classes (here the  the majority class) and has a high uncertainty for the underrepresented classes.
 
 In order to achieve better results, it seem crucial to fully understand the 264 features. If we compare our result to what other teams achieved,  an accuracy of greater than 68\% was not achieved by anyone. A deeper understanding of what the features mean with respect to the given music genres would surely lead to even higher accuracies and decreasing log losses.
 
 The questions raised at the beginning was partially answered. We see that it is somewhat possible to predict a music genre based on the given training data up to a certain degree. But if we come back to our initial example Spotify, it is quite obvious that there is still a lot of room for improvement, as they surely would not be satisfied with an accuracy of below than 70\%. And this also raises the question on which enhanced analysis Spotify might perform in order to better classify the data.
 
  
-\textit{
-Interpret and explain your results
-\begin{itemize}
-\item \textcolor{red}{Discuss the relevance of the performance measures (accuracy and LogLoss) for imbalanced multiclass datasets.}
-\item How the results relate to the literature.
-\item \textcolor{green}{Suggestions for future research/improvement.}
-\item \textcolor{green}{Did the study answer your questions?}
-\end{itemize}
-}
+%\textit{
+%Interpret and explain your results
+%\begin{itemize}
+%\item Discuss the relevance of the performance measures (accuracy and LogLoss) for imbalanced multiclass datasets.
+%\item How the results relate to the literature.
+%\item Suggestions for future research/improvement.
+%\item Did the study answer your questions?
+%\end{itemize}
+%}
 
 \bibliography{bibliography}{}
 \bibliographystyle{alpha}
