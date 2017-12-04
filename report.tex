@@ -170,7 +170,7 @@ We can see measurements of the methods chosen in Table~\ref{table:measurements}.
                                   &         & \textbf{Validation} & \textbf{Kaggle} \\ \hline
 \multirow{2}{*}{\textbf{Log Reg}} & Accuracy  & 0.74329             & 0.65021         \\ \cline{2-2}
                                   & Log. Loss & -                   & 0.17736         \\ \hline
-\multirow{2}{*}{\textbf{SVM}}     & Accuracy  & 0.85835             & 0.60238         \\ \cline{2-2}
+\multirow{2}{*}{\textbf{SVM}}     & Accuracy  & 0.85835             & 0.55837         \\ \cline{2-2}
                                   & Log. Loss & -                   & 0.25370         \\ \hline
 \multirow{2}{*}{\textbf{NB}}      & Accuracy  & -                   & 0.61720         \\ \cline{2-2}
                                   & Log. Loss & -                   & 0.19949         \\ \hline
@@ -180,6 +180,30 @@ We can see measurements of the methods chosen in Table~\ref{table:measurements}.
 \caption{Performance measurements (accuracy and LogLoss), and performance on Kaggle competition.}
 \label{table:measurements}
 \end{table}
+
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{report_files/Confusion_matrix_Log_Loss}
+	\caption{Confusion matrix for Log Reg}
+	\label{pic:cm_logloss}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{report_files/Confusion_matrix_SVM}
+	\caption{Confusion matrix for SVM}
+	\label{pic:cm_SVM}
+\end{figure}
+
+%\begin{figure}[h]
+%	\includegraphics[width=\linewidth]{report_files/Confusion_matrix_NBayes}
+%	\caption{Confusion matrix for Naive Bayes}
+%	\label{pic:cm_NB}
+%\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{report_files/Confusion_matrix_NN}
+	\caption{Confusion matrix for Neural Nets}
+	\label{pic:cm_NN}
+\end{figure}
 
 \newpage
 \section{Discussion/Conclusions}
