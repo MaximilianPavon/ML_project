@@ -1,29 +1,30 @@
 \documentclass[12pt,a4paper,twocolumn]{article}
 
-\usepackage[english]{babel} 		%% englische Sprache
+\usepackage[english]{babel} 			%% englische Sprache
 
 \usepackage[latin1,applemac]{inputenc}	%% deutsche Umlaute wie normale
- 					%% Buchstaben verwenden 
- 					%% (ansonsten muesste ‰ durch a getippt werden)
-\usepackage{a4wide} 			%% kleinere Seitenränder
+ 								%% Buchstaben verwenden 
+ 								%% (ansonsten muesste ‰ durch a getippt werden)
+%\usepackage{a4wide} 				%% kleinere Seitenränder
 
 \usepackage{amssymb,amsthm,amsfonts, amsmath}
 								%% diverse Matheerweiterungen, z.B. \implies
  								%% diverse Matheerweiterungen, z.B. \mathbb{R}
-%\usepackage{stmaryrd} 			%% weitere Symbole
-\usepackage{epsfig} 			%% um eps-Dateien einzubinden (\epsfig{file=...})
-\usepackage{longtable} 			%% fuer Tabellen ueber mehrere Seiten
+%\usepackage{stmaryrd} 				%% weitere Symbole
+\usepackage{epsfig} 					%% um eps-Dateien einzubinden (\epsfig{file=...})
+\usepackage{longtable} 				%% fuer Tabellen ueber mehrere Seiten
 \usepackage{color}
 \usepackage{hyperref}
 \usepackage{dsfont}
 \usepackage{caption}
 \usepackage{multirow}
+\usepackage{float}
 
 \hypersetup{						%get rid of red box around hyperlink
 pdfborder = {0 0 0}
 }
 
-\usepackage{listings} % noice code inclusion
+\usepackage{listings} 				% noice code inclusion
 \usepackage{color}
 
 \definecolor{deepblue}{rgb}{0,0,0.5}
@@ -38,13 +39,14 @@ pdfborder = {0 0 0}
 	showstringspaces=false,
 	basicstyle=\footnotesize\ttfamily,
 	keywordstyle=\color{deepblue},
-	emphstyle=\color{deepred},    % Custom highlighting style
+	emphstyle=\color{deepred},    		% Custom highlighting style
 	stringstyle=\color{deepgreen},
 	commentstyle=\itshape\color{deepgreen}
 }
 
 
-\title{ Methodology discussion for skewed classes data modelling \\ Data Analysis Project for \\ \textit{Machine Learning: Basic Principles}}
+\title{Methodology discussion for skewed classes data modelling \\ 
+Data Analysis Project for \\ \textit{Machine Learning: Basic Principles}}
 %\author{Héctor Laria Mantecón and Maximilian Proll}
 \date{\today}
 
@@ -53,7 +55,13 @@ pdfborder = {0 0 0}
 \maketitle
 
 \begin{abstract}
-In this project we explore different methods to tackle a simple Machine Learning problem. We present different methods to model a music genre classification based on song features and discuss the implications that skewed classes have on the training process. After that we show the results and conclude that simple modelling is not sufficient enough and, albeit complicated, there are still opportunities for further enhancements regarding performance.
+In this project we explore different methods ranging from Logistic Regression and Support Vector Machines to Naïve Bayes classifiers and Neural Networks to tackle a simple Machine Learning problem.
+
+We present different methods to model a music genre classification based on song features and discuss the implications that skewed classes have on the training process.
+
+After that we show the results, which show that a model based on Logistic Regression is achieving both the highest accuracy as well as the lowest log loss.
+
+We conclude that simple modelling is not sufficient enough and, albeit complicated, there are still opportunities for further enhancements regarding performance.
 
 %\textit{
 %Precise summary of the whole report, previews the contents and results. Must be a single paragraph between 100 and 200 words.
@@ -84,7 +92,7 @@ Like in real life the existing songs are already classified to one music genre. 
 \section{Data analysis}
 This competition is performed on two datasets, a training and a test dataset with $4.363$ resp. $6.544$ songs. Each dataset has a total of $264$ features, which will be used for predicting one of $10$ classes. The features con be grouped into the 3 main components of music: timbre, pitch and rhythm. The $10$ classes are: Pop Rock, Electronic, Rap, Jazz, Latin, R\&B, International, Country, Reggae and Blues.
 
-In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} \cite{tsne} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown in Figure~\ref{pic:tsne}.
+In order to better visualise the training data we performed the \textit{Principal component analysis} (PCA) \cite{DBLP:journals/corr/Shlens14} and afterwards the \textit{t-Distributed Stochastic Neighbor Embedding} (t-SNE) \cite{tsne} with $3$ remaining dimensions. The result of this award-winning embedding is shown in Figure~\ref{pic:tsne}.
 
 \begin{figure}
 \includegraphics[width=\linewidth]{report_files/TSNE_data.png}
@@ -121,11 +129,11 @@ To achieve best overall results we tried various Machine Learning techniques ran
 \begin{table}
 \centering
 \begin{tabular}{c|c|c}
-ML technique & $p$ & $p_{st}$ \\ \hline
-LogReg & 0.66 & 0.74 \\
-SVM & 0.03 & 0.22 \\
-NB & 0.46 & 0.52 \\
-NN & 0.55 & 0.73
+ML technique 	& $p$ 	& $p_{st}$ 	\\ \hline
+LogReg 		& 0.66 	& 0.74 		\\
+SVM 		& 0.03 	& 0.22 		\\
+NB 			& 0.46 	& 0.52		 \\
+NN 			& 0.55 	& 0.73
 \end{tabular}
 \caption{Comparison of accuracy of training data without standardisation and with standardisation}
 \label{tab:accuracystandard}
@@ -165,77 +173,81 @@ Finally we used three different learning rate schedules for weight updates. The 
 
 The initialisation value of the learning rate was decreased if no convergence occurred within a reasonable number of iterations.
 
-\textit{
-Explain your whole approach (you can include a block diagram showing the steps in your process).
-\begin{itemize}
-\item What methods/algorithms, why were the methods chosen.
-\item What evaluation methodology (cross CV, etc.).
-\end{itemize}
-}
+%\textit{
+%Explain your whole approach (you can include a block diagram showing the steps in your process).
+%\begin{itemize}
+%\item What methods/algorithms, why were the methods chosen.
+%\item What evaluation methodology (cross CV, etc.).
+%\end{itemize}
+%}
 
 \section{Results}
 
-\textit{
-Summarize the results of the experiments without discussing their implications.
-\begin{itemize}
-\item Include both performance measures (accuracy and LogLoss).
-\item How does it perform on kaggle compared to the train data.
-\item Include a confusion matrix.
-\end{itemize}
-}
+%\textit{
+%Summarize the results of the experiments without discussing their implications.
+%\begin{itemize}
+%\item Include both performance measures (accuracy and LogLoss).
+%\item How does it perform on kaggle compared to the train data.
+%\item Include a confusion matrix.
+%\end{itemize}
+%}
 
-We can see measurements of the methods chosen in Table~\ref{table:measurements}.
+We can see measurements of the methods chosen summarised in Table~\ref{table:measurements}. In this table both performance measures - accuracy as well as  Log Loss are reported as well as the comparison of the performance of the selected model on the training data and on the unseen test data.
 
-\begin{table}[h]
+\begin{table}[t]
 \centering
 \begin{tabular}{llcc}
-                                  &         & \textbf{Validation} & \textbf{Kaggle} \\ \hline
-\multirow{2}{*}{\textbf{Log Reg}} & Accuracy  & 0.74329             & 0.65021         \\ \cline{2-2}
-                                  & Log. Loss & -                   & 0.17736         \\ \hline
-\multirow{2}{*}{\textbf{SVM}}     & Accuracy  & 0.85835             & 0.55837         \\ \cline{2-2}
-                                  & Log. Loss & -                   & 0.25370         \\ \hline
-\multirow{2}{*}{\textbf{NB}}      & Accuracy  & -                   & 0.61720         \\ \cline{2-2}
-                                  & Log. Loss & -                   & 0.19949         \\ \hline
-\multirow{2}{*}{\textbf{NN}}      & Accuracy  & 0.73779             & 0.63523         \\ \cline{2-2}
-                                  & Log. Loss & -                   & 0.19893         \\ \hline
+                                  			&         		& \textbf{Validation}	& \textbf{Kaggle}	\\ \hline
+\multirow{2}{*}{\textbf{Log Reg}}	& Accuracy  	& 0.74329			& 0.65021			\\ \cline{2-2}
+							& Log. Loss 	& 0.16318			& 0.17736			\\ \hline
+\multirow{2}{*}{\textbf{SVM}}		& Accuracy	& 0.85835			& 0.55837			\\ \cline{2-2}
+							& Log. Loss	& 0.23756			& 0.25370			\\ \hline
+\multirow{2}{*}{\textbf{NB}}		& Accuracy	& -				& 0.61720			\\ \cline{2-2}
+							& Log. Loss	& 0.19015			& 0.19949			\\ \hline
+\multirow{2}{*}{\textbf{NN}}		& Accuracy	& 0.73779			& 0.63523			\\ \cline{2-2}
+							& Log. Loss	& 0.18376			& 0.19893			\\ \hline
 \end{tabular}
 \caption{Performance measurements (accuracy and LogLoss), and performance on Kaggle competition.}
 \label{table:measurements}
 \end{table}
 
+Ultimately an intuitive way to visualise the performance of the classification on the training data is a confusion matrix which is displayed in Figure~ \ref{pic:cm_logloss}, \ref{pic:cm_SVM}, 
+%\ref{pic:cm_NB}
+and \ref{pic:cm_NN} for Logistic Regression, Support Vector Machines, Naïve Bayes Classifiers and Neural Networks respectively.
+
 \begin{figure}[h]
 	\includegraphics[width=\linewidth]{report_files/Confusion_matrix_Log_Loss}
-	\caption{Confusion matrix for Log Reg}
+	\caption{Confusion matrix for Logistic Regression}
 	\label{pic:cm_logloss}
 \end{figure}
 
 \begin{figure}[h]
 	\includegraphics[width=\linewidth]{report_files/Confusion_matrix_SVM}
-	\caption{Confusion matrix for SVM}
+	\caption{Confusion matrix for Support Vector Machines}
 	\label{pic:cm_SVM}
 \end{figure}
 
 %\begin{figure}[h]
 %	\includegraphics[width=\linewidth]{report_files/Confusion_matrix_NBayes}
-%	\caption{Confusion matrix for Naive Bayes}
+%	\caption{Confusion matrix for Naïve Bayes}
 %	\label{pic:cm_NB}
 %\end{figure}
 
 \begin{figure}[h]
 	\includegraphics[width=\linewidth]{report_files/Confusion_matrix_NN}
-	\caption{Confusion matrix for Neural Nets}
+	\caption{Confusion matrix for Neural Networks}
 	\label{pic:cm_NN}
 \end{figure}
 
 \section{Discussion/Conclusions}
 
-Table \ref{table:measurements} shows that the best result is achieved by Logistic Regression. The second best result is achieved by the five-layered neural network. Naïve bayes became second last before support vector machines.
+Table~\ref{table:measurements} shows that the best result is achieved by Logistic Regression. The second best result is achieved by the five-layered neural network. Naïve Bayes became second last before support vector machines.
 
 The support vector machines perform relatively bad, because it continuously overfitted the data strongly and therefore did not learn enough of the underlying principles in order to generalise well for unseen data, which is why both results (accuracy and log loss) are becoming last in the Kaggle competition whereas the score for the training data is among the highest.
 
 In this competition we computed two different performance measures, one being \textit{accuracy} and the other one being \textit{log loss}. The usage of accuracy is generally legit when the underlying data can by classified into two classes. But whenever the data shall be classified to more than two classes, instead of a binary classification, we would like to see, how certain our model actually is and penalise uncertainty. This is the motivation for using log loss over accuracy. The latter is easier to interpret and understand by humans, but we loose information on the model regarding uncertainty. Log loss might not be as intuitive on the first sight, but gives way more information about how well a model is really performing.
 
-Especially if the test data set is highly unbalanced (i.e. the majority of the data is from one certain class and all other classes are under-represented) the usage of accuracy as a performance measure shows its downsides. In this case a high accuracy might be primarily driven by a good prediction for the majority class, but on the other side the model might be unable to predict the correct class for the under-represented classes. The log loss on the other hand, we correctly reflect if a model is only performing well for certain classes (here the  the majority class) and has a high uncertainty for the under-represented classes.
+Especially if the test data set is highly unbalanced (i.e. the majority of the data is from one certain class and all other classes are under-represented) the usage of accuracy as a performance measure shows its downsides. In this case a high accuracy might be primarily driven by a good prediction for the majority class, but on the other side the model might be unable to predict the correct class for the under-represented classes. The log loss on the other hand, we correctly reflect if a model is only performing well for certain classes (here the the majority class) and has a high uncertainty for the under-represented classes.
 
 In order to achieve better results, it seem crucial to fully understand the 264 features. If we compare our result to what other teams achieved, an accuracy of greater than 68\% was not achieved by anyone. A deeper understanding of what the features mean with respect to the given music genres would surely lead to even higher accuracies and decreasing log losses. As well as additional methods to deal with such an imbalance of class samples.
 
@@ -258,15 +270,30 @@ The questions raised at the beginning was partially answered. We see that it is 
 \section*{Appendices}
 
 \begin{lstlisting}[caption=This code shows our general approach for the model training.]
+
+#standardise the data
 scaler = StandardScaler()
 train_data_stand = scaler.fit_transform(train_data)
 validation_data_stand = scaler.fit_transform(validation_data)
 test_data_stand = scaler.fit_transform(test_data)
 
-nn3 = MLPClassifier(alpha=0.00000001, hidden_layer_sizes=(250,200,180, 150, 120), max_iter=50000, activation='tanh', verbose='True', solver='adam', learning_rate='adaptive', early_stopping=True, validation_fraction=0.25, tol=1e-4)
+#define model
+nn = MLPClassifier(alpha=0.00000001, hidden_layer_sizes=(250,200,180, 150, 120), max_iter=50000, activation='tanh', verbose='True', solver='adam', learning_rate='adaptive', early_stopping=True, validation_fraction=0.25, tol=1e-4)
 
-nn3.fit(train_data_stand,train_labels)
-...
+#fit model
+nn.fit(train_data_stand,train_labels)
+
+#check score in order to adjust hyper-parameters
+nn.score(train_data_stand, train_labels)
+
+#make prediction for unseen test data, once for accuracy and once for log loss
+pred_nn = nn.predict(test_data_stand)
+pred_nn_prob = nn.predict_proba(test_data_stand)
+
+#export data with self-written function
+utils.make_submission(pred_nn, 'NN')
+utils.make_submission(pred_nn_prob, 'NN', log=True)
+
 \end{lstlisting}
 
 %\textit{Additional information that is not essential to explain your findings, but supports your work. For example, source code, additional images, mathematical derivations, etc. \\
