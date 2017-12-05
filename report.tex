@@ -64,7 +64,7 @@ Like in real life the existing songs are already classified to one music genre. 
 \section{Data analysis}
 This competition is performed on two datasets, a training and a test dataset with $4.363$ resp. $6.544$ songs. Each dataset has a total of $264$ features, which will be used for predicting one of $10$ classes. The features con be grouped into the 3 main components of music: timbre, pitch and rhythm. The $10$ classes are: Pop Rock, Electronic, Rap, Jazz, Latin, R\&B, International, Country, Reggae and Blues.
 
-In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} \cite{tsne} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown in Figure \ref{pic:tsne}.
+In order to better visualise the training data we performed the \textit{t-Distributed Stochastic Neighbor Embedding} \cite{tsne} (\textbf{t-SNE}) with $3$ remaining dimensions. The result of this award-winning embedding is shown in Figure~\ref{pic:tsne}.
 
 \begin{figure}
 \includegraphics[width=\linewidth]{report_files/TSNE_data.png}
@@ -74,7 +74,7 @@ In order to better visualise the training data we performed the \textit{t-Distri
 
 This figure shows, that there does not exist a trivial separation of all 10 classes after the t-SNE in a 3-dimensional space. This might already lower somehow the expectations for the prediction accuracy. 
 
-It is also important to know the distribution of the given training dataset. The distribution is shown in figure \ref{pic:classdistribution}.
+It is also important to know the distribution of the given training dataset. The distribution is shown in Figure~\ref{pic:classdistribution}.
 
 \begin{figure}
 \includegraphics[width=\linewidth]{report_files/Class_distribution.png}
@@ -96,7 +96,7 @@ This distribution shows very clearly that the training data is skewed, which mea
 \section{Methods and experiments}
 \subsection{Overall approach}
 
-To achieve best overall results we tried various machine learning techniques ranging from logistic regression (LogReg) and support vector machines (SVM) to na夫e Bayes classifiers (NB) and neural networks (NN). Common for all machine learning techniques was, that we first standardised the training as well as the test data prior to performing any analysis. This step is crucial as it helps to reduce multicollinearity within the data and helps to improve the generalisation. This behaviour is backed up by comparing the accuracy of the prediction of the training data without standardisation ($p$) and with standardisation ($p_{st}$), which is summarised in table \ref{tab:accuracystandard}.
+To achieve best overall results we tried various Machine Learning techniques ranging from Logistic Regression (LogReg) and Support Vector Machines (SVM) to Na夫e Bayes classifiers (NB) and Neural Networks (NN). Common for all Machine Learning techniques was, that we first standardised the training as well as the test data prior to performing any analysis. This step is crucial as it helps to reduce multicollinearity within the data and helps to improve the generalisation. This behaviour is backed up by comparing the accuracy of the prediction of the training data without standardisation ($p$) and with standardisation ($p_{st}$), which is summarised in Table~\ref{tab:accuracystandard}.
 
 \begin{table}
 \centering
@@ -209,15 +209,15 @@ We can see measurements of the methods chosen in Table~\ref{table:measurements}.
 
 \section{Discussion/Conclusions}
 
-Table \ref{table:measurements} shows that the best result is achieved by logistic regression. The second best result is achieved by the five-layered neural network. Na夫e bayes became second last before support vector machines.
+Table \ref{table:measurements} shows that the best result is achieved by Logistic Regression. The second best result is achieved by the five-layered neural network. Na夫e bayes became second last before support vector machines.
 
-The support vector machines perform relatively bad, because it continuously overfitted the data strongly and therefore did not learn enough of the underlying principles in order to generalise well for unseen data, which is why both results (accuracy and log loss) are becoming last in the kaggle competition whereas the score for the training data is among the highest.
+The support vector machines perform relatively bad, because it continuously overfitted the data strongly and therefore did not learn enough of the underlying principles in order to generalise well for unseen data, which is why both results (accuracy and log loss) are becoming last in the Kaggle competition whereas the score for the training data is among the highest.
 
 In this competition we computed two different performance measures, one being \textit{accuracy} and the other one being \textit{log loss}. The usage of accuracy is generally legit when the underlying data can by classified into two classes. But whenever the data shall be classified to more than two classes, instead of a binary classification, we would like to see, how certain our model actually is and penalise uncertainty. This is the motivation for using log loss over accuracy. The latter is easier to interpret and understand by humans, but we loose information on the model regarding uncertainty. Log loss might not be as intuitive on the first sight, but gives way more information about how well a model is really performing.
 
-Especially if the test data set is highly unbalanced (i.e. the majority of the data is from one certain class and all other classes are underrepresented) the usage of accuracy as a performance measure shows its downsides. In this case a high accuracy might be primarily driven by a good prediction for the majority class, but on the other side the model might be unable to predict the correct class for the underrepresented classes. The log loss on the other hand we correctly reflect if a model is only performing well for certain classes (here the  the majority class) and has a high uncertainty for the underrepresented classes.
+Especially if the test data set is highly unbalanced (i.e. the majority of the data is from one certain class and all other classes are under-represented) the usage of accuracy as a performance measure shows its downsides. In this case a high accuracy might be primarily driven by a good prediction for the majority class, but on the other side the model might be unable to predict the correct class for the under-represented classes. The log loss on the other hand, we correctly reflect if a model is only performing well for certain classes (here the  the majority class) and has a high uncertainty for the under-represented classes.
 
-In order to achieve better results, it seem crucial to fully understand the 264 features. If we compare our result to what other teams achieved,  an accuracy of greater than 68\% was not achieved by anyone. A deeper understanding of what the features mean with respect to the given music genres would surely lead to even higher accuracies and decreasing log losses.
+In order to achieve better results, it seem crucial to fully understand the 264 features. If we compare our result to what other teams achieved, an accuracy of greater than 68\% was not achieved by anyone. A deeper understanding of what the features mean with respect to the given music genres would surely lead to even higher accuracies and decreasing log losses. As well as additional methods to deal with such an imbalance of class samples.
 
 The questions raised at the beginning was partially answered. We see that it is somewhat possible to predict a music genre based on the given training data up to a certain degree. But if we come back to our initial example Spotify, it is quite obvious that there is still a lot of room for improvement, as they surely would not be satisfied with an accuracy of below than 70\%. And this also raises the question on which enhanced analysis Spotify might perform in order to better classify the data.
 
