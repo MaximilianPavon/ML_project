@@ -23,6 +23,26 @@
 pdfborder = {0 0 0}
 }
 
+\usepackage{listings} % noice code inclusion
+\usepackage{color}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\lstset{
+	frame=single,
+	language=Python,
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=tb,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\color{deepblue},
+	emphstyle=\color{deepred},    % Custom highlighting style
+	stringstyle=\color{deepgreen},
+	commentstyle=\itshape\color{deepgreen}
+}
+
 
 \title{ \textcolor{red}{\textbf{\textit{Some super concise and informative title}}} \\ Data Analysis Project for \\ \textit{Machine Learning: Basic Principles}}
 %\author{Héctor Laria Mantecón and Maximilian Proll}
@@ -237,9 +257,21 @@ The questions raised at the beginning was partially answered. We see that it is 
 
 \section*{Appendices}
 
-\textit{Additional information that is not essential to explain your findings, but supports your work. For example, source code, additional images, mathematical derivations, etc. \\
-If you include source code, don’t include the whole code, focus only on the most important parts, for example, a function implementing a specific algorithm
-}
+\begin{lstlisting}[caption=This code shows our general approach for the model training.]
+scaler = StandardScaler()
+train_data_stand = scaler.fit_transform(train_data)
+validation_data_stand = scaler.fit_transform(validation_data)
+test_data_stand = scaler.fit_transform(test_data)
+
+nn3 = MLPClassifier(alpha=0.00000001, hidden_layer_sizes=(250,200,180, 150, 120), max_iter=50000, activation='tanh', verbose='True', solver='adam', learning_rate='adaptive', early_stopping=True, validation_fraction=0.25, tol=1e-4)
+
+nn3.fit(train_data_stand,train_labels)
+...
+\end{lstlisting}
+
+%\textit{Additional information that is not essential to explain your findings, but supports your work. For example, source code, additional images, mathematical derivations, etc. \\
+%If you include source code, don’t include the whole code, focus only on the most important parts, for example, a function implementing a specific algorithm
+%}
 
 
 \end{document}
