@@ -61,7 +61,7 @@ We present different methods to model a music genre classification based on song
 
 After that we show the results, which show that a model based on Logistic Regression is achieving both the highest accuracy as well as the lowest log loss.
 
-We conclude that simple modelling is not sufficient enough and, albeit complicated, there are still opportunities for further enhancements regarding performance.
+We conclude that simple modelling is not sufficient enough and, albeit complicated, there are still opportunities for further improvement regarding performance.
 
 %\textit{
 %Precise summary of the whole report, previews the contents and results. Must be a single paragraph between 100 and 200 words.
@@ -142,16 +142,16 @@ NN 			& 0.55 	& 0.73
 In order to prevent our analysis against heavy overfitting we chose to implement cross-validation for all machine learning techniques. We associated randomly 20\% of the training set to be the validation set. We then trained the model with the remaining 80\% of the training set and validating the analysis on the validation set. This is done multiple times and averaged.
 
 \subsection{Logistic Regression}
-We first approached the considered for this set up was Logistic Regression and discarded Linear Regression, as it is obvious the data is highly non-linear. We changed fist the penalty, using L1 regularisation in favour of L2, delivering better results.
+The first approach we considered for this set up was Logistic Regression. We directly discarded Linear Regression, as it is obvious the data is highly non-linear. We changed fist the penalty, using L1 regularisation in favour of L2, delivering better results.
 
 We also tweaked the stopping criteria to get the best performance with the less time expenditure. For the solver, we trained with liblinear and saga, which are recommended for large datasets, and newton-cg and lbfgs, recommended for multiclass problems. The changes delivered minimal to no advantage on the accuracy.
 
-We used the warm start technique for every solver, without luck either.
+We explored the warm start technique for every solver, without luck either.
 
 \subsection{Support Vector Machines}
 SVMs were trained with several kernels, and its accuracy was close to Logistic Regression. Although they were easily overfitted. Penalty parameter $C$ was set to $0.8$. All trainings were performed with balanced class weight, which uses the values of the labels to automatically adjust weights inversely proportional to class frequencies in the input data. As a measure of dealing with skewed classes.
 
-We made use of a linear kernel, a polynomial, RBF and a sigmoid because they were new to us, and we needed to have empirical experience with them to select the best one for the competition. Linear and RBF validation error was good, but they performed bad on the test set. Polynomial was overfitting with ease, and sigmoid wasn't complex enough to beat the benchmark.
+We made use of a linear kernel, a polynomial, RBF and a sigmoid because they were new to us, and we needed to have empirical experience with them to select the best one for the competition. Linear and RBF validation error was good, but they performed badly on the test set. Polynomial was overfitting with ease, and sigmoid wasn't complex enough to beat the benchmark.
 
 We ended up selecting a regularised polynomial kernel. However, it didn't achieved better accuracy overall.
 
@@ -163,13 +163,13 @@ Gaussian Na•ve Bayes was set up with no prior and a smoothing parameter of 1. On
 Multinomial Na•ve Bayes was scaled normally, and didn't use any prior either. It turned out that the Bayesian approach wasn't well suited for this type of data, and therefore performed badly on the dataset.
 
 \subsection{Neural Networks}
-For this approach, we tried a fixed architecture of 5 fully connected hidden layers with 120 to 250 neurons per layer. We tested several different settings for the hyper-parameters such as the activation function, the update technique and the constancy as well as the initialisation value of the learning rate.
+For this approach, we tried a fixed architecture of 5 fully connected hidden layers with 120 to 250 neurons per layer. We tested several different settings for the hyper-parameters such as the activation function, the update technique and the constancy, as well as the initialisation value of the learning rate.
 
-For the activation function we variated between the logistic sigmoid function, the the hyperbolic tangent function and the rectified linear unit function.
+For the activation function we alternated the logistic sigmoid function with the hyperbolic tangent function and the rectified linear unit function.
 
 Apart from the simple stochastic gradient descent we tried also an optimiser from the family of quasi-Newton methods and the well known update technique Adam \cite{DBLP:journals/corr/KingmaB14}, a stochastic gradient-based optimiser.
 
-Finally we used three different learning rate schedules for weight updates. The most commonly used is a constant learning rate, but we also used a gradually decreasing learning rate each time step $t$ using an inverse scaling and finally an adaptive learning rate, which keeps the learning rate constant as long as training loss keeps decreasing and each time two consecutive epochs fail to decrease training loss or fail to increase validation score, the current learning rate is divided by 5.
+Finally we used three different learning rate schedules for weight updates. The most commonly used is a constant learning rate, but we also exploited a gradually decreasing learning rate each time step $t$, using an inverse scaling and finally an adaptive learning rate. Which keeps the learning rate constant as long as training loss keeps decreasing, and each time two consecutive epochs fail to decrease training loss or fail to increase validation score, the current learning rate is divided by 5.
 
 The initialisation value of the learning rate was decreased if no convergence occurred within a reasonable number of iterations.
 
